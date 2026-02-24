@@ -1,8 +1,7 @@
 tags:
   - name: Base URL
+    description: Base URL information
   - name: Rate Limits
+    description: API rate limit policy
   - name: Version
-  - name: Orders
-  - name: Labels
-  - name: Manifests
-  - name: Returns
+    description: API version details
