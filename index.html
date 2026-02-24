@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Click & Drop API</title>
+<head>
+  <meta charset="utf-8"/>
+  <title>Click & Drop API</title>
 
-    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
 
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
 
-      /* Header bar giống RM */
-      .topbar {
-        background: #1e2f3f;
-        color: white;
-        padding: 14px 24px;
-        font-size: 18px;
-        font-weight: 600;
-      }
-    </style>
-  </head>
+    /* Thanh xanh trên cùng giống RM */
+    .topbar {
+      background: #1e2f3f;
+      color: white;
+      padding: 14px 24px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  </style>
+</head>
 
-  <body>
-    <div class="topbar">V1</div>
+<body>
 
-    <redoc 
-      spec-url="openapi.yaml"
-      expand-responses="200"
-      hide-download-button="false"
-      theme='{
-        "colors": {
-          "primary": {
-            "main": "#1e2f3f"
-          }
-        },
-        "sidebar": {
-          "backgroundColor": "#f3f3f3",
-          "textColor": "#333"
-        },
-        "rightPanel": {
-          "backgroundColor": "#1e2f3f"
-        },
-        "typography": {
-          "fontFamily": "Inter, Arial, sans-serif"
+  <div class="topbar">V1</div>
+
+  <redoc
+    spec-url="openapi.yaml"
+    expand-responses="200"
+    hide-download-button="false"
+    theme='{
+      "colors": {
+        "primary": {
+          "main": "#1e2f3f"
         }
-      }'>
-    </redoc>
-  </body>
+      },
+      "sidebar": {
+        "backgroundColor": "#f3f3f3"
+      },
+      "rightPanel": {
+        "backgroundColor": "#1e2f3f"
+      }
+    }'>
+  </redoc>
+
+</body>
 </html>
