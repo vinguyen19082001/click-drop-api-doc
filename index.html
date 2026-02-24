@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <title>Click & Drop API</title>
+  <meta charset="UTF-8">
+  <title>Orders API Documentation</title>
 
-  <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"></script>
+  <!-- Swagger UI CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
 
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
+      background: #f4f6f8;
     }
 
     .topbar {
@@ -25,30 +25,25 @@
 
 <body>
 
-  <div class="topbar">V1</div>
+<div class="topbar">Orders API - V1</div>
 
-  <redoc
-    spec-url="https://vinguyen19082001.github.io/click-drop-api-doc/openapi.yaml"
-    expand-responses="200"
-    hide-download-button="false"
-    theme='{
-      "colors": {
-        "primary": {
-          "main": "#1e2f3f"
-        }
-      },
-      "sidebar": {
-        "backgroundColor": "#f3f3f3"
-      },
-      "rightPanel": {
-        "backgroundColor": "#1e2f3f"
-      },
-      "typography": {
-        "fontFamily": "Arial, sans-serif",
-        "fontSize": "14px"
-      }
-    }'>
-  </redoc>
+<div id="swagger-ui"></div>
+
+<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
+
+<script>
+  window.onload = function () {
+    SwaggerUIBundle({
+      url: "https://vinguyen19082001.github.io/click-drop-api-doc/openapi.yaml",
+      dom_id: "#swagger-ui",
+      deepLinking: true,
+      presets: [
+        SwaggerUIBundle.presets.apis
+      ],
+      layout: "BaseLayout"
+    });
+  };
+</script>
 
 </body>
 </html>
