@@ -1,3 +1,14 @@
+openapi: 3.0.0
+
+info:
+  title: Click & Drop API
+  version: 1.0.0
+  description: API documentation for Click & Drop integration.
+
+servers:
+  - url: https://api.yourdomain.com/v1
+    description: Production server
+
 tags:
   - name: Base URL
     description: Base URL information
@@ -5,3 +16,28 @@ tags:
     description: API rate limit policy
   - name: Version
     description: API version details
+
+paths:
+  /version:
+    get:
+      tags:
+        - Version
+      summary: Get API version details.
+      responses:
+        "200":
+          description: Returns details about the API version
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commit:
+                    type: string
+                  build:
+                    type: string
+                  release:
+                    type: string
+                  releaseDate:
+                    type: string
+        "500":
+          description: Internal Server Error
