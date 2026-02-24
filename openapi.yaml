@@ -1,1 +1,216 @@
+openapi: 3.0.3
 
+info:
+  title: Orders API
+  version: 1.0.0
+  description: |
+    This document describes how to integrate with EMX through Shipad's system.
+
+    Root URL:
+    https://q4985y7ky9.execute-api.us-east-1.amazonaws.com/prod
+
+servers:
+  - url: https://q4985y7ky9.execute-api.us-east-1.amazonaws.com/prod
+
+tags:
+  - name: orders
+    description: Order operations
+
+paths:
+  /orders:
+    post:
+      tags:
+        - orders
+      summary: Create an order
+      description: Create shipment and generate shipping label.
+      operationId: createOrder
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+
+      responses:
+        '200':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateOrderResponse'
+
+components:
+  schemas:
+
+    CreateOrderRequest:
+      type: object
+      required:
+        - weight
+        - Consignee
+        - Dimensions
+        - numberOfPieces
+        - customsDeclarations
+        - declaredValue
+        - referenceNumber1
+
+      properties:
+
+        weight:
+          type: object
+          required:
+            - value
+            - unit
+          properties:
+            value:
+              type: number
+            unit:
+              type: string
+              enum: [Grams, Kilograms, Pounds, Ounces]
+
+        Consignee:
+          type: object
+          required:
+            - contact
+            - address
+          properties:
+
+            contact:
+              type: object
+              required:
+                - name
+                - phoneNumber
+              properties:
+                name:
+                  type: string
+                mobileNumber:
+                  type: string
+                phoneNumber:
+                  type: string
+                emailAddress:
+                  type: string
+                  format: email
+                companyName:
+                  type: string
+                altMobileNumber:
+                  type: string
+
+            address:
+              type: object
+              required:
+                - line1
+                - city
+                - state
+                - countryCode
+                - countryName
+                - zipCode
+              properties:
+                line1:
+                  type: string
+                line2:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                countryCode:
+                  type: string
+                countryName:
+                  type: string
+                zipCode:
+                  type: string
+                category:
+                  type: string
+                  enum: [Residential, Commercial]
+
+        Dimensions:
+          type: object
+          required:
+            - Unit
+            - Width
+            - Height
+            - Length
+          properties:
+            Unit:
+              type: string
+            Width:
+              type: number
+            Height:
+              type: number
+            Length:
+              type: number
+
+        numberOfPieces:
+          type: integer
+
+        customsDeclarations:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomsDeclarationItem'
+
+        declaredValue:
+          type: object
+          required:
+            - amount
+            - currency
+          properties:
+            amount:
+              type: string
+            currency:
+              type: string
+
+        referenceNumber1:
+          type: string
+        referenceNumber2:
+          type: string
+        referenceNumber3:
+          type: string
+        referenceNumber4:
+          type: string
+        specialNotes:
+          type: string
+        remarks:
+          type: string
+
+
+    CustomsDeclarationItem:
+      type: object
+      required:
+        - countryOfOrigin
+        - description
+        - hsCode
+        - quantity
+        - value
+        - weight
+
+      properties:
+        countryOfOrigin:
+          type: string
+        description:
+          type: string
+        hsCode:
+          type: string
+        quantity:
+          type: integer
+        value:
+          type: number
+        weight:
+          type: number
+
+
+    CreateOrderResponse:
+      type: object
+      required:
+        - awbNumber
+        - referenceNumber
+        - labelBase64
+
+      properties:
+        awbNumber:
+          type: string
+        labelUrl:
+          type: string
+        referenceNumber:
+          type: string
+        labelBase64:
+          type: string
