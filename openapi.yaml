@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Your Company API
+  version: 1.0.0
+  description: API documentation
+
+servers:
+  - url: https://api.yourdomain.com/v1
+    description: Production server
+
+tags:
+  - name: Base URL
+  - name: Rate Limits
+  - name: Orders
+  - name: Labels
+  - name: Manifests
+  - name: Returns
+
+paths:
+  /orders:
+    post:
+      tags:
+        - Orders
+      summary: Create an order
+      description: Create shipment and generate label
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "200":
+          description: Successful response
+
+  /labels/{orderId}:
+    get:
+      tags:
+        - Labels
+      summary: Get label
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Label returned
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
