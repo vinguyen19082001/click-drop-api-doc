@@ -9,20 +9,10 @@ servers:
   - url: https://api.yourdomain.com/v1
     description: Production server
 
-tags:
-  - name: Base URL
-    description: Base URL information
-  - name: Rate Limits
-    description: API rate limit policy
-  - name: Version
-    description: API version details
-
 paths:
   /version:
     get:
-      tags:
-        - Version
-      summary: Get API version details.
+      summary: Get API version details
       responses:
         "200":
           description: Returns details about the API version
