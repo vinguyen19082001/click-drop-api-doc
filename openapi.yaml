@@ -4,7 +4,7 @@ info:
   description: Import your orders, retrieve your orders and generate labels.
   version: 1.0.0
 
-host: rm-api-f2ir.onrender.com
+host: https://rm-api-f2ir.onrender.com
 schemes:
   - https
 
